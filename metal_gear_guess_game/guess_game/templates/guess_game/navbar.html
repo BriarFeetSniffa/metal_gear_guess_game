@@ -1,0 +1,22 @@
+<style>
+  .hello-msg{
+    font-size: 18px;
+    color: #fff
+  }
+</style>
+
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand" style="color:white;">Navbar</a>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      {% if user.is_authenticated %}
+      <span class="hello-msg">Hello,{{ request.user }}</span>
+      <span><a class="hello-msg" href="{% url 'guess_game:logout' %}">Logout</a></span>
+      {% else %}
+      <a class="nav-link" href="{% url 'guess_game:register' %}">Register</a>
+      {% endif %}
+    </div>
+  </div>
+
+
+</nav>

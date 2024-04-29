@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'guess_game/style.css' %}">
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  {% block title %}
+  <title>Start</title>
+  {% endblock %}
+</head>
+<body>
+{% block content %}
+<a class="home_link" aria-current="page" href="{% url 'home' %}">Home</a>
+<h1 class="h_color">Type your guess below</h1>
+<form action="" method="POST">
+    {% csrf_token %}
+    <label for="Guess" style="color:white;">Guess: </label>
+    <input id="Guess" type="text" list='all_chars' placeholder="Character" class="form-control" name="Guess" value="{{ current_name }}" autocomplete="off">
+    <datalist id="all_chars">
+      {% for character in all_chars %}
+        <option value="{{ character.name }}"></option>
+      {% endfor %}
+    </datalist>
+  <input class="ok_button" type="submit" value="OK">
+{% endblock %}
+
+{% block foot %}
+</form>
+</body>
+{% endblock %}
+</html>

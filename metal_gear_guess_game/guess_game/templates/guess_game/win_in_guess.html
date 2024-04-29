@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'guess_game/style.css' %}">
+
+<!DOCTYPE HTML>
+<html>
+ <head>
+  <meta charset="utf-8">
+   {% block title %}
+    <title>Win</title>
+   {% endblock %}
+ </head>
+ <body>
+ {% block content %}
+ <a class="home_link" aria-current="page" href="{% url 'home' %}">Home</a>
+  <form action="">
+   <h2 class="h_color"> Win in guess</h2>
+   <div id="parent">
+      <p class="h_color">Guess resets every 5 minutes</p>
+      <h4 id="child" class="h_color">Info list</h4>
+   </div>
+{% endblock %}
+
+{% block foot %}
+</form>
+</body>
+{% endblock %}
+</html>

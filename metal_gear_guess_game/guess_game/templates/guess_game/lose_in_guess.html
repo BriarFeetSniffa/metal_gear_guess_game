@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'guess_game/style.css' %}">
+
+<!DOCTYPE HTML>
+<html>
+ <head>
+  <meta charset="utf-8">
+   {% block title %}
+    <title>Lose</title>
+   {% endblock %}
+  <script> function isCharacter() {
+    if(isEmpty(str)) status.innerHTML = "Type something";
+   }
+  </script>
+ </head>
+ <body>
+  {% block content %}
+ <a class="home_link" aria-current="page" href="{% url 'home' %}">Home</a>
+  <form action="" method="POST">
+   <h2 class="h_color"> Lose in guess</h2>
+    <p class="h_color">Неверно, но вы можете попробывать еще раз (◕‿◕)</p>
+    {% csrf_token %}
+    <label for="Guess" style="color:white;">Guess: </label>
+        <input id="Guess" type="text" list='all_chars' placeholder="Character" class="form-control" name="Guess" value="{{ current_name }}" autocomplete="off">
+    <datalist id="all_chars">
+      {% for character in all_chars %}
+        <option value="{{ character.name }}"></option>
+      {% endfor %}
+    </datalist>
+    <input type="submit" value="OK">
+{% endblock %}
+
+{% block foot %}
+</form>
+</body>
+{% endblock %}
+</html>

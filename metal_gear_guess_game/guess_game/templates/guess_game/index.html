@@ -1,0 +1,54 @@
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'guess_game/style.css' %}">
+{% block template %}
+{% include "navbar.html" %}
+{% endblock %}
+
+<style>
+input[type=submit]{
+  font-family: "Open Sans", sans-serif;
+  font-size: 16px;
+  letter-spacing: 2px;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: #fff;
+  cursor: pointer;
+  border: 3px solid;
+  padding: 0.25em 0.5em;
+  box-shadow: 1px 1px 0px 0px, 2px 2px 0px 0px, 3px 3px 0px 0px, 4px 4px 0px 0px, 5px 5px 0px 0px;
+  position: relative;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  width: 110px;
+  height: 35px;
+}
+
+input[type=submit]:active {
+  box-shadow: 0px 0px 0px 0px;
+  top: 5px;
+  left: 5px;
+}
+
+@media (min-width: 768px) {
+  input[type=submit]{
+    padding: 0.25em 0.75em;
+  }
+}
+
+
+</style>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Main</title>
+</head>
+<body style="background-image: url('{% static 'guess_game/images/new_main_bg.jpg' %}'); background-repeat: no-repeat; background-position: top;">
+<h1 style="color:white;">Main menu</h1>
+<form action="{% url 'guess_game:start_of_guess' %}">
+    <input style="color:black;" type="submit" value="Classic" />
+</form>
+</body>
+</html>
